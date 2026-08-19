@@ -87,10 +87,24 @@
         <strong id="cart-total">$0</strong>
       </div>
       <div class="customer-data">
+       <div class="customer-data">
         <input type="text" id="cust-name" placeholder="Tu Nombre completo *" required>
-        <select id="cust-delivery">
+        
+        <!-- Selector de Envío -->
+        <select id="cust-delivery" onchange="toggleAddressField()">
           <option value="Retiro por local (Catamarca 2615)">Retiro por local (Catamarca 2615)</option>
           <option value="Envío a domicilio">Envío a domicilio</option>
+        </select>
+
+        <!-- Campo de Dirección (Oculto por defecto) -->
+        <input type="text" id="cust-address" placeholder="Calle, Número, Barrio, Ciudad *" style="display: none;">
+
+        <!-- Selector de Medio de Pago -->
+        <select id="cust-payment">
+          <option value="" disabled selected>Elegí cómo pagar *</option>
+          <option value="Efectivo">💵 Efectivo</option>
+          <option value="Transferencia">🏦 Transferencia bancaria</option>
+          <option value="Tarjeta">💳 Tarjeta (Crédito/Débito)</option>
         </select>
       </div>
       <button class="btn-whatsapp" onclick="sendToWhatsApp()">
