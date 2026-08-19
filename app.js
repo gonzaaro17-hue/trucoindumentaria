@@ -8,21 +8,21 @@ const ADMIN_PIN = '1234'; // 🔑 TU CLAVE DE ACCESO ADMIN
 const defaultProducts = [
   {
     id: 1,
-    name: 'Campera Adidas Puffer',
-    price: 68000,
+    name: 'Campera Reversible',
+    price: 48000,
     category: 'camperas',
-    image: 'https://images.unsplash.com/photo-1544441893-675973e31985?w=500',
-    sizes: ['M', 'L', 'XL'],
-    colors: ['Negro', 'Azul']
+    image: 'campera48000talleM.jpg',
+    sizes: ['unica'],
+    colors: ['unica']
   },
   {
     id: 2,
-    name: 'Remera Oversize Cotton',
-    price: 25000,
-    category: 'remeras',
-    image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500',
-    sizes: ['S', 'M', 'L', 'XL'],
-    colors: ['Negro', 'Blanco']
+    name: 'Campera Reversible',
+    price: 56000,
+    category: 'camperas',
+    image: 'campera56000.jpg',
+    sizes: ['unica'],
+    colors: ['unica']
   }
 ];
 
