@@ -24,7 +24,16 @@ const defaultProducts = [
     sizes: ['unica'],
     colors: ['unica']
   }
+     id: 3,
+     name: 'Campera Reversible',
+     price: 56000,
+     category: 'camperas',
+     image: 'campera56000.jpg',
+     sizes: ['unica'],
+     colors: ['unica']
+  }
 ];
+
 
 let products = JSON.parse(localStorage.getItem('truco_products')) || defaultProducts;
 let cart = [];
