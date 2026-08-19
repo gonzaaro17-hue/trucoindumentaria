@@ -1,6 +1,6 @@
 const SETTINGS = {
   name: 'TRUCO Indumentaria',
-  wa: '5493534177651'
+  wa: '549353417765'
 };
 
 const ADMIN_PIN = '1234'; // 🔑 TU CLAVE DE ACCESO ADMIN
@@ -116,29 +116,14 @@ function toggleCart(forceOpen = false) {
 
 function sendToWhatsApp() {
   if (cart.length === 0) return alert('El carrito está vacío');
-  
   const name = document.getElementById('cust-name').value.trim();
   const delivery = document.getElementById('cust-delivery').value;
-  const address = document.getElementById('cust-address').value.trim();
-  const payment = document.getElementById('cust-payment').value;
 
-  // Validaciones
   if (!name) return alert('Por favor ingresá tu nombre');
-  if (delivery === 'Envío a domicilio' && !address) return alert('Por favor ingresá tu dirección para el envío');
-  if (!payment) return alert('Por favor elegí una forma de pago');
 
   let total = 0;
   let text = `*NUEVO PEDIDO - ${SETTINGS.name}*\n\n`;
-  text += `👤 *Cliente:* ${name}\n`;
-  
-  // Condición para mostrar envío o retiro
-  if (delivery === 'Envío a domicilio') {
-    text += `📍 *Envío a domicilio:* ${address}\n`;
-  } else {
-    text += `📍 *Retira en:* ${delivery}\n`;
-  }
-  
-  text += `💳 *Forma de pago:* ${payment}\n\n`;
+  text += `👤 *Cliente:* ${name}\n\n`;
   text += `🛍️ *Productos:*\n`;
 
   cart.forEach(item => {
@@ -146,7 +131,8 @@ function sendToWhatsApp() {
     text += `• ${item.name} | Talle: ${item.selectedSize} | Color: ${item.selectedColor} ($${item.price.toLocaleString('es-AR')})\n`;
   });
 
-  text += `\n💰 *TOTAL A PAGAR:* $${total.toLocaleString('es-AR')}\n`;
+  text += `\n💰 *TOTAL:* $${total.toLocaleString('es-AR')}\n`;
+  text += `📍 *Entrega:* ${delivery}`;
 
   window.open(`https://wa.me/${SETTINGS.wa}?text=${encodeURIComponent(text)}`, '_blank');
 }
@@ -239,15 +225,4 @@ function resetAdminForm() {
 
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
-  }
-function toggleAddressField() {
-  const deliverySelect = document.getElementById('cust-delivery').value;
-  const addressInput = document.getElementById('cust-address');
-  
-  if (deliverySelect === 'Envío a domicilio') {
-    addressInput.style.display = 'block'; // Muestra el campo
-  } else {
-    addressInput.style.display = 'none'; // Oculta el campo
-    addressInput.value = ''; // Limpia lo que haya escrito si se arrepiente
-  });
-}
+});
