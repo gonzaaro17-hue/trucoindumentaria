@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRUCO Indumentaria</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header / Encabezado -->
+  <header>
+    <div class="logo">
+      <img src="truco.PNG" alt="logo" class="header-logo" onerror="this.style.display='none'">
+      <span id="shop-name">TRUCO INDUMENTARIA</span>
+    </div>
+    <div class="header-controls">
+      <button class="btn-admin-trigger" onclick="loginAdmin()"><i class="fa-solid fa-gear"></i> Admin</button>
+      <div class="cart-icon" onclick="toggleCart()">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner Hero Portada -->
+  <section class="hero-banner">
+    <div class="hero-overlay">
+      <span class="hero-subtitle">NUEVA COLECCIÓN</span>
+      <h2 class="hero-title">ARTE EN CADA PRENDA</h2>
+      <a href="#product-grid" class="hero-btn">VER CATÁLOGO</a>
+    </div>
+  </section>
+
+  <!-- Categorías -->
+  <nav class="categories">
+    <button class="cat-btn active" onclick="filterCategory('todos')">Todos</button>
+    <button class="cat-btn" onclick="filterCategory('remeras')">Remeras</button>
+    <button class="cat-btn" onclick="filterCategory('pantalones')">Pantalones</button>
+    <button class="cat-btn" onclick="filterCategory('camperas')">Camperas</button>
+    <button class="cat-btn" onclick="filterCategory('buzos')">Buzos</button>
+  </nav>
+
+  <!-- Grilla de Productos -->
+  <main>
+    <section id="product-grid" class="grid"></section>
+  </main>
+
+  <!-- FOOTER CON ESTILO -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>TRUCO <span>INDUMENTARIA</span></h3>
+        <p>Indumentaria urbana & streetwear de calidad premium.</p>
+      </div>
+
+      <div class="footer-info">
+        <h4><i class="fa-solid fa-location-dot"></i> Local Físico</h4>
+        <p>Catamarca 2615</p>
+        <p>Atención: Lun a Sáb de 09:00 a 20:00 hs</p>
+      </div>
+
+      <div class="footer-social">
+        <h4>Seguinos</h4>
+        <div class="social-links">
+          <a href="https://www.instagram.com/truco_indumentaria/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+          <a href="https://wa.me/5493534457004" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 TRUCO Indumentaria - Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- MODAL CARRITO LATERAL -->
+  <aside id="cart-modal" class="cart-modal hidden">
+    <div class="cart-header">
+      <h2><i class="fa-solid fa-bag-shopping"></i> Tu Pedido</h2>
+      <button class="close-btn" onclick="toggleCart()">✕</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="total-row">
+        <span>TOTAL:</span>
+        <strong id="cart-total">$0</strong>
+      </div>
+      <div class="customer-data">
+        <input type="text" id="cust-name" placeholder="Tu Nombre completo *" required>
+        <select id="cust-delivery">
+          <option value="Retiro por local (Catamarca 2615)">Retiro por local (Catamarca 2615)</option>
+          <option value="Envío a domicilio">Envío a domicilio</option>
+        </select>
+      </div>
+      <button class="btn-whatsapp" onclick="sendToWhatsApp()">
+        <i class="fa-brands fa-whatsapp"></i> Enviar pedido a WhatsApp
+      </button>
+    </div>
+  </aside>
+
+  <!-- MODAL ADMIN FLOTANTE -->
+  <div id="admin-modal" class="modal-bg hidden">
+    <div class="modal-content">
+      <div class="cart-header">
+        <h2>⚙️ Panel de Control</h2>
+        <button class="close-btn" onclick="closeAdminModal()">✕</button>
+      </div>
+      <form id="admin-form" onsubmit="saveProduct(event)">
+        <input type="hidden" id="admin-prod-id">
+        <input type="text" id="admin-prod-name" placeholder="Nombre de la prenda" required>
+        <input type="number" id="admin-prod-price" placeholder="Precio ($)" required>
+        
+        <select id="admin-prod-cat">
+          <option value="remeras">Remeras</option>
+          <option value="pantalones">Pantalones</option>
+          <option value="camperas">Camperas</option>
+          <option value="buzos">Buzos</option>
+        </select>
+
+        <input type="text" id="admin-prod-img" placeholder="Nombre de foto (ej: foto.jpg) o Link" required>
+        <input type="text" id="admin-prod-sizes" placeholder="Talles (ej: S, M, L, XL)" required>
+        <input type="text" id="admin-prod-colors" placeholder="Colores (ej: Negro, Blanco)" required>
+
+        <div class="admin-form-btns">
+          <button type="submit" class="btn-save">Guardar Producto</button>
+          <button type="button" class="btn-cancel" onclick="resetAdminForm()">Limpiar</button>
+        </div>
+      </form>
+
+      <h3>Lista de Productos</h3>
+      <div id="admin-products-list" class="admin-list"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
