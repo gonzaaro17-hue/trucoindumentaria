@@ -1,6 +1,6 @@
 const SETTINGS = {
   name: 'TRUCO Indumentaria',
-  wa: '5493534457004'
+  wa: '5493534177651'
 };
 
 const ADMIN_PIN = '1234'; // 🔑 TU CLAVE DE ACCESO ADMIN
